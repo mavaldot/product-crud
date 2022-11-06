@@ -2,11 +2,17 @@ import express from 'express';
 import * as dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import routes from './routes/routes.js';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
 dotenv.config()
 
 const app = express();
 const PORT = process.env.PORT;
+
+app.use(bodyParser.json());
+app.use(cors());
+app.options('*', cors());
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
