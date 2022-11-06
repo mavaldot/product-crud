@@ -25,7 +25,6 @@ class ProductService {
 
     async updateProduct(id, input) {
         try {
-            console.log(input);
             const product = await ProductModel.findOneAndUpdate({_id: id}, input, {
                 new: true,
             });

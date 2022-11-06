@@ -31,8 +31,6 @@ class ProductController {
             if (product == null) {
                 return res.status(409).send(`Product does not exist`);
             }
-            console.log('a');
-            console.log(req.body);
             const updatedProduct = await ProductService.updateProduct(req.params.id, req.body);
             return res.send(updatedProduct);
         }
