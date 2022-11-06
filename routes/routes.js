@@ -1,34 +1,15 @@
 import express from 'express';
-import UserModel from '../models/user.model.js'
+import UserModel from '../models/user-model.js'
+import UserController from '../controllers/user-controller.js';
 
 function routes(app) {
-    app.get('/api/user', async (req, res) => {
-        console.log(`hello user`);
-        try {
-            const users = await UserModel.find({});
-            res.send(users);
-        }
-        catch (err) {
-            console.log(err);
-            res.send(err);
-        }
-
-    });
-    app.post('/api/user', async (req, res) => {
-        try {
-            console.log(req);
-            const {name, email, username, identification, password, active} = req.body;
-            const user = new UserModel({
-                name, email, username, identification, password, active
-            });
-            const newUser = await user.save();
-            res.send(200);
-        }
-        catch (err) {
-            console.log(err);
-            res.send(err)
-        }
-    })
+    app.get('/api/user', UserController.getUsers);
+    app.get('/api/user/:id', UserController.getUser);
+    app.post('/api/user', UserController.createUser);
+    app.put('/api/user/:id', UserController.updateUser);
+    app.delete('/api/user/:id', UserController.deleteUser);
+    
+    
 }
 
 export default routes;

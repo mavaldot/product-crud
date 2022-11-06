@@ -23,6 +23,7 @@ const UserSchema = new mongoose.Schema({
     identification: {
         type: Number,
         required: true,
+        unique: true
     },
     password: {
         type: String,
