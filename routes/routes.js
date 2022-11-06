@@ -1,6 +1,6 @@
 import express from 'express';
-import UserModel from '../models/user-model.js'
 import UserController from '../controllers/user-controller.js';
+import ProductController from '../controllers/product-controller.js';
 
 function routes(app) {
     app.get('/api/user', UserController.getUsers);
@@ -8,7 +8,12 @@ function routes(app) {
     app.post('/api/user', UserController.createUser);
     app.put('/api/user/:id', UserController.updateUser);
     app.delete('/api/user/:id', UserController.deleteUser);
-    
+
+    app.get('/api/product', ProductController.getProducts);
+    app.get('/api/product/:id', ProductController.getProduct);
+    app.post('/api/product', ProductController.createProduct);
+    app.put('/api/product/:id', ProductController.updateProduct);
+    app.delete('/api/product/:id', ProductController.deleteProduct);
     
 }
 
