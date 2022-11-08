@@ -1,4 +1,6 @@
 import ProductModel from '../models/product-model.js'
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 class ProductService {
 

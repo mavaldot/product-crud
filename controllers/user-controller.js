@@ -1,5 +1,6 @@
 import UserService from "../services/user-service.js";
 import bcrypt from 'bcrypt';
+import jwt from "jsonwebtoken";
 
 class UserController {
 
