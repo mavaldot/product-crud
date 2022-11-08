@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 
 class UserController {
 
+
     async getUsers(req, res) {
         try {
             const users = await UserService.getUsers();
@@ -74,6 +75,32 @@ class UserController {
             return res.status(409).send(`Error:\n ${err}`);
         }
     }
+    async login(req, res) {
+        try {
+          const user = await UserService.findUserByEmail(req.body.email);
+          if (
+            user !== null &&
+            (await bcrypt.compare(req.body.password, user.password))
+          ) {
+            const token = jwt.sign(
+              { user_id: user._id, email: user.email },
+              process.env.TOKENSECRET,
+              { expiresIn: "2h" }
+            );
+    
+            return res
+              .status(200)
+              .send({ email: user.email, name: user.name, token });
+          }
+    
+          return res.status(401).send("Invalid credentials");
+        } catch (e) {
+          console.log(e)
+    
+          return res.status(409).send(e.message);
+        }
+      }
+    
 
 }
 
