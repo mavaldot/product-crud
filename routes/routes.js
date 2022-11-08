@@ -1,10 +1,11 @@
 import express from 'express';
 import UserController from '../controllers/user-controller.js';
 import ProductController from '../controllers/product-controller.js';
+import verifyToken from  '../middleware/auth.js';
 
 function routes(app) {
     app.get('/api/user', UserController.getUsers);
-    app.get('/api/user/:id', UserController.getUser);
+    app.get('/api/user/:id',verifyToken, UserController.getUser);
     app.post('/api/user', UserController.createUser);
     app.put('/api/user/:id', UserController.updateUser);
     app.delete('/api/user/:id', UserController.deleteUser);
