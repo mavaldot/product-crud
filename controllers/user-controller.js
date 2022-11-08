@@ -48,19 +48,7 @@ class UserController {
         }
     } 
     
-    async getUser(req, res) {
-        try {
-            const user = await UserService.findUserById(req.params.id);
-            if (user == null) {
-                return res.status(409).send(`User does not exist`);
-            }
-            user.password = '';
-            return res.send(user);
-        }
-        catch (err) {
-            return res.status(409).send(`Error:\n ${err}`);
-        }
-    }
+
 
     async deleteUser(req, res) {
         try {
@@ -75,9 +63,25 @@ class UserController {
             return res.status(409).send(`Error:\n ${err}`);
         }
     }
+    async getUser(req, res) {
+        try {
+            const user = await UserService.findUserById(req.params.id);
+            console.log(user.password)
+            if (user == null) {
+                return res.status(409).send(`User does not exist`);
+            }
+            user.password = '';
+            return res.send(user);
+        }
+        catch (err) {
+            return res.status(409).send(`Error:\n ${err}`);
+        }
+    }
     async login(req, res) {
         try {
           const user = await UserService.findUserByEmail(req.body.email);
+          console.log(user.password)
+          console.log(req.body.password)
           if (
             user !== null &&
             (await bcrypt.compare(req.body.password, user.password))
