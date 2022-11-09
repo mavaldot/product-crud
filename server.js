@@ -15,7 +15,7 @@ app.use(cors());
 app.options('*', cors());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('User and Product CRUD');
 });
 
 app.listen(PORT, () => {
