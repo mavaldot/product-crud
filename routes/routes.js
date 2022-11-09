@@ -13,7 +13,7 @@ function routes(app) {
 
     app.get('/api/product', ProductController.getProducts);
     app.get('/api/product/:id', ProductController.getProduct);
-    app.post('/api/product', verifyToken, ProductController.createProduct);
+    app.post('/api/product', ProductController.createProduct);
     app.put('/api/product/:id', verifyToken, ProductController.updateProduct);
     app.delete('/api/product/:id',verifyToken, ProductController.deleteProduct);
     
