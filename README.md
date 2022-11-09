@@ -4,10 +4,10 @@ Deployment: https://node-product-crud.herokuapp.com/
 
 Opciones:
 ```
-GET POST /api/user
-GET PUT DELETE /api/user/:id
-POST /api/user/login
+GET POST https://node-product-crud.herokuapp.com/api/user
+GET PUT DELETE https://node-product-crud.herokuapp.com/api/user/:id
+POST https://node-product-crud.herokuapp.com/api/user/login
 
-GET POST /api/product
-GET PUT DELETE /api/product/:id
+GET POST https://node-product-crud.herokuapp.com/api/product
+GET PUT DELETE https://node-product-crud.herokuapp.com/api/product/:id
 ```
