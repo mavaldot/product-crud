@@ -55,6 +55,7 @@ class ProductService {
             throw new Error(e);
           }
     }
+    
 }
 
 export default new ProductService();
